@@ -1,0 +1,36 @@
+djanjo-admin startprojct projectName
+
+
+python manage.py startapp music
+python manage.py migrate - connect databases to app
+
+python manage.py makemigrations music - create the established databases
+python manage.py migrate - apply changes
+python manage.py sqlmigrate music 0001 - check the created databases
+
+
+#Adding elements to dtatbase from django shell
+python manage.py shell
+from music.models import Album, Song
+Album.objects.all()
+ a=Album(artist="Taylor Swift",album_title="Red",genre="Country",album_logo="https://upload.wikimedia.org/wikiped
+ia/en/e/e8/Taylor_Swift_-_Red.png")
+a.save()
+
+Album.objects.all()
+Album.objects.filter(id=1)
+Album.objects.filter(artist__startswith='Ariana')
+
+
+python manage.py createsuperuser
+
+
+Accessing Songs through Album due to foreignkey property - using the set method
+	album1.song_set.all() - access all songs associated with this Album
+	
+Create method :  song_title = album1.song_set.create(song_title='I love bacon', file_type='mp3')
+
+album1.song_set.count()
+
+
+CSRF Tokens :- Important
